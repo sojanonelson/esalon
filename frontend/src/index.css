@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bgPrimary: #0a0a0f;
+  --color-bgSecondary: #13141f;
+  --color-accentPrimary: #cba365;
+  --color-accentHover: #b08d55;
+  --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bgPrimary text-white font-inter min-h-screen overflow-x-hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .heading-gradient {
+    background: linear-gradient(45deg, #fff, #cba365);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-br from-accentPrimary to-accentHover text-white px-6 py-3 rounded-lg font-outfit font-semibold cursor-pointer transition-all duration-300 inline-flex items-center justify-center gap-2 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(203,163,101,0.3)] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-transparent text-white border border-white/10 px-6 py-3 rounded-lg font-outfit font-semibold cursor-pointer transition-all duration-300 hover:bg-white/5 hover:border-accentPrimary;
+  }
+  .section-container {
+    @apply max-w-7xl mx-auto px-5 py-20;
+  }
+  .input-field {
+    @apply bg-black/20 border border-white/10 p-3.5 rounded-lg text-white font-[inherit] text-base outline-none transition-colors duration-300 focus:border-accentPrimary w-full;
+  }
+}
